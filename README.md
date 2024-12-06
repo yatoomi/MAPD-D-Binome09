@@ -1,28 +1,18 @@
-PNEditor (Petri Net editor)
-========
+Nous avons ajouté des commentaires détaillés dans le code pour clarifier 
+le rôle de chaque classe et méthode dans le cadre du modèle de réseau de Petri.
+Ces commentaires visent à faciliter la compréhension du fonctionnement interne
+des classes, en particulier pour les nouveaux développeurs qui pourraient être
+amenés à travailler sur ce code. En outre, des modifications ont été suggérées
+ pour améliorer certaines méthodes :
 
-The original PNE can be downloaded from [www.pneditor.org](http://www.pneditor.org/)
+Dans la classe `Edge`: Nous avons suggéré d'ajouter une validation
+dans la méthode `setTokens` et la méthode `refresh` pour éviter que
+le nombre de jetons ne devienne négatif. Cette amélioration garantirait
+que le système de Petri fonctionne de manière cohérente en évitant des états
+non souhaités.
 
-This instance is the result of a student project by Joris Thaveau for teaching purpose.
+Dans l'interface `IPetriNet`: nous avons ajouté une fonction step() sans argument,
+le constructeur de l'interface était quant-à lui pas nécessaire car il est implicite.
 
-It is a simplified Petri net editor that allows the editing of many PetriNet models.
-
-To use:
-
-1. Run org.pneditor.editor.Main as a Java application
-2. Select the model used (the menu scans the org.pneditor.petrinet.adapters folder to build a list of available models and adapters). initial and imta are available. Places and transitions are displayed in different ways.
-3. Edit the PetriNet and fire transitions.
-
-You may experiment some unexpected exceptions. Especially if you mix models.
-
-The pedagogical approach consists in:
-
-1. Develop your own PetriNet model in an independent project/environment - with no GUI, just the ''business'' view
-2. Pack it as a jar, and let it be visible in the path
-3. Develop an Adapter in the org.pneditor.petrinet.adapters folder of PNE to make your model editable
-
-The adapter may be simple or complex depending on the "distance" between your model and the one expected by PNE.
-
-Code license: [GNU GPL v3](http://www.gnu.org/licenses/gpl.html)
-
-Requirements: Java SE 8+
+Cependant pour les tests, nous avons essayé de réaliser au mieux dans la classe test,
+mais il nous reste des difficultés.
